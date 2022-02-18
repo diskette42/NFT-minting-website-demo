@@ -24,7 +24,7 @@ const MyApp = (props) => {
     onChangeAddress()
     onChangeChain()
     // loadWeb3()
-    // loadBlockchainData()
+    loadBlockchainData()
   },[accountAddress])
 
 
@@ -54,20 +54,21 @@ const MyApp = (props) => {
   //   }
   // };
 
-  // const loadBlockchainData = async()=>{
-  //     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-  //     // if (accountAddress === accounts) return
-  //     console.log("accounts",accounts)
-  //     setUserState({...userState,accountAddress:accounts[0]})
+  const loadBlockchainData = async()=>{
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      // if (accountAddress === accounts) return
+      console.log("accounts",accounts)
+      setUserState({...userState,accountAddress:accounts[0]})
       
-  // }
+  }
 
   const connectToMetaMask = async()=>{
     await window.ethereum.enable();
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-    // if (accountAddress === accounts) return
-    console.log("accounts",accounts)
-    setUserState({...userState,accountAddress:accounts[0]})
+    daaw
+    // const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    // // if (accountAddress === accounts) return
+    // console.log("accounts",accounts)
+    // setUserState({...userState,accountAddress:accounts[0]})
     setUserState({...userState,metamaskConnected: true });
     window.location.reload();
   }
