@@ -26,6 +26,7 @@ function Sidebar() {
 ]
 
   return (
+    <div className="w-20 bg-gray-900 fixed h-full">
     <div className="flex flex-col mt-3 justify-center items-center">
         {datas.map((data,key)=>(
         <Link key={key} href={data.path}>
@@ -38,6 +39,7 @@ function Sidebar() {
             </div>
         </div>
         </Link>
+        
 
         ))}
         
@@ -49,6 +51,7 @@ function Sidebar() {
                 Mint
             </div>
         </div> */}
+    </div>
     </div>
   )
 }

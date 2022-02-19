@@ -4,11 +4,14 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  ], 
   theme: {
+    screen:{
+      'dragon': ''
+    },
     extend: {
       fontFamily: {
-        "Montserrat": ['Montserrat', ...defaultTheme.fontFamily.sans],
+        "VT323": ['VT323', "monospace"],
       },
 
     },

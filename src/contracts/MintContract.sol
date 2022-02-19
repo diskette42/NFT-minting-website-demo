@@ -25,7 +25,7 @@ contract NFT is ERC721Enumerable, Ownable {
   string public baseExtension = ".json";
   uint256 public cost = 0.05 ether;
   uint256 public maxSupply = 100;
-  uint256 public maxMintAmount = 50;
+  uint256 public maxMintAmount = 5;
   bool public paused = false;
   mapping(address => bool) public whitelisted;
 
@@ -134,4 +134,13 @@ contract NFT is ERC721Enumerable, Ownable {
     require(os);
     // =============================================================================
   }
+function getNumberOfTokensMinted() public view returns(uint256) {
+    uint256 totalNumberOfTokensMinted = totalSupply();
+    return totalNumberOfTokensMinted;
+  }
+  function getMaxSupply() public view returns(uint256) {
+    return maxSupply;
+  }
+  
+
 }
