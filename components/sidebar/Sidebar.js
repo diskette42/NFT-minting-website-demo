@@ -22,6 +22,11 @@ function Sidebar() {
         name:'mint',
         icon:'https://www.sandbox.game/img/02_Side_Bar/svg/play-icon.svg',
         path:'/mint'
+    },
+    {
+        name:'Lab',
+        icon:'https://www.sandbox.game/img/02_Side_Bar/svg/create-icon.svg',
+        path:'/lab'
     }
 ]
 

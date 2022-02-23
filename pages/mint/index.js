@@ -125,7 +125,7 @@ function Mint() {
     if(!isEmpty(myContract)){
       try{ 
         console.log('yeah')
-        const minted = await myContract.methods.getNumberOfTokensMinted().call()
+        const minted = await myContract.methods.totalSupply().call()
         console.log({minted})
         if(minted){
         setSupply(state=>({...state,mintedSupply:minted}))
@@ -142,12 +142,12 @@ function Mint() {
   const handleMint = async() =>{
     try{
     const method = Object.keys(myContract.methods).length
-    const price = 0.05;
+    const price = 0.02;
     const totalCost = count*price 
     const totalCostWei = Web3.utils.toWei(totalCost.toString())
     if (method != 0 && count != 0){
     // console.log({totalCostWei,count,totalCost})
-      await myContract.methods.mint(blockchain.account,count).send({
+      await myContract.methods.mint(count).send({
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: totalCostWei,
@@ -211,9 +211,6 @@ function Mint() {
     </div>
     <style jsx>
     {`
-      .page-wrap {
-        height: calc(100vh - 60px);
-      }
       .mint-page-bg{
         background-image:url('https://www.sandbox.game/img/30_Landing/alpha/Alpha1Closed-bg.png');
         background-size:cover;

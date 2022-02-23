@@ -2,6 +2,7 @@ import { applyMiddleware, compose, createStore, combineReducers } from "redux";
 import { persistStore, persistReducer,createTransform } from 'redux-persist'
 import thunk from "redux-thunk";
 import blockchainReducer from "./blockchain/blockchainReducer";
+import createImageReducer from "./createImage/createImageReducer";
 import storage from 'redux-persist/lib/storage'
 // const storage = require("redux-persist/lib/storage").default;
 
@@ -28,12 +29,14 @@ const transformCircular = createTransform(
 
 const rootReducer = combineReducers({
   blockchain: blockchainReducer,
+  createImage: createImageReducer,
 //   data: dataReducer,
 });
 
 const persistConfig = {
     key: 'root',
     storage,
+    whitelist:['blockchain'],
     transforms: [transformCircular]
 }
 

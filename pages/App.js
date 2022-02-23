@@ -39,10 +39,10 @@ function App({Component,pageProps}) {
   const isConnected =async()=>{
     let web3 = new Web3(window.ethereum)
     const accounts = await window.ethereum.request({method: 'eth_accounts'});
-    console.log({accounts,length:accounts.length})
+    // console.log({accounts,length:accounts.length})
 
     web3.eth.getAccounts((acc)=>{
-      console.log(acc)
+      // console.log(acc)
       if(acc || accounts.length){
         return
       }

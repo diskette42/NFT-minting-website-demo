@@ -1,19 +1,10 @@
 {
-    "CONTRACT_ADDRESS": "0x246a2a1efe708932084adf8f5ba381f5a64116cb",
-    "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x246a2a1efe708932084adf8f5ba381f5a64116cb",
+    "CONTRACT_ADDRESS": "0xE49C10F4E7aB12F1f5aD047F5B2F4bB08bCd2b63",
+    "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xE49C10F4E7aB12F1f5aD047F5B2F4bB08bCd2b63",
     "NETWORK": {
       "NAME": "Rinkeby",
       "SYMBOL": "Rinkeby",
       "ID": 4
-    },
-    "NFT_NAME": "Demo NFT",
-    "SYMBOL": "DEMO",
-    "MAX_SUPPLY": 992,
-    "WEI_COST": 4000000000000000000,
-    "DISPLAY_COST": 4,
-    "GAS_LIMIT": 285000,
-    "MARKETPLACE": "Opeansea",
-    "MARKETPLACE_LINK": "https://opensea.io/collection/the-stripes-nft",
-    "SHOW_BACKGROUND": true
+    }
+    
   }
-  
