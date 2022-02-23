@@ -17,7 +17,6 @@
     "@mui/material": "^5.4.2",
     "axios": "^0.26.0",
     "bn.js": "^5.2.0",
-    "canvas": "^2.9.0",
     "file-system": "^2.2.2",
     "flatted": "^3.2.5",
     "next": "12.1.0",
