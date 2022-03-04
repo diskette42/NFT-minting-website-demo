@@ -1,5 +1,3 @@
-import axios from 'axios'
-import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 function ShowImage({ newImage, filterImage }) {
