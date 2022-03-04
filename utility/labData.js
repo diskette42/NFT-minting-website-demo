@@ -108,19 +108,19 @@ export const labData = [
       {
         asset: 'iris',
         name: 'large',
-        img: '/img/layers/iris/Large20.png',
+        img: '/img/layers/Iris/Large20.png',
         loadedImage: 'layers/iris/Large#20.png',
       },
       {
         asset: 'iris',
         name: 'medium',
-        img: '/img/layers/iris/Medium20.png',
+        img: '/img/layers/Iris/Medium20.png',
         loadedImage: 'layers/iris/Medium#20.png',
       },
       {
         asset: 'iris',
         name: 'small',
-        img: '/img/layers/iris/Small60.png',
+        img: '/img/layers/Iris/Small60.png',
         loadedImage: 'layers/iris/Small#60.png',
       },
     ],
