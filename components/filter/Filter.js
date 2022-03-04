@@ -138,7 +138,7 @@ function FilterComponent() {
 
   const getAllTraits = async () => {
     try {
-      const res = await axios.get('http://localhost:3002/getAllAttributes')
+      const res = await axios.get('/api/getAllAttributes')
       setTraits(res.data.traits)
     } catch (err) {
       console.log(err)
@@ -146,17 +146,14 @@ function FilterComponent() {
   }
 
   const getAllImages = async () => {
-    const res = await axios.get('http://localhost:3002/getAllImages')
+    const res = await axios.get('/api/getAllImages')
   }
   const getImagesByFiltered = async () => {
     try {
       const obj = {
         arr: checked,
       }
-      const res = await axios.post(
-        'http://localhost:3002/getFilteredImages',
-        obj,
-      )
+      const res = await axios.post('/api/getFilteredImages', obj)
       console.log('haha' + res.data.data)
       setFilterImage(res.data.data)
     } catch (err) {
