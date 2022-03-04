@@ -43,7 +43,9 @@ function App({ Component, pageProps }) {
   // })
   useEffect(() => {
     getConfig()
-    isConnected()
+    if (window.ethereum) {
+      isConnected()
+    }
     const loading = async () => {
       try {
         await new Promise((r) => setTimeout(r, 1000))
@@ -89,56 +91,37 @@ function App({ Component, pageProps }) {
       </Box>
     )
   }
-
-  // const getMintAbi = async (address) => {
-  //   try{
-  //   // console.log(CONFIG.CONTRACT_ADDRESS)
-  //   const abiResponse = await fetch("/config/abi.json", {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   });
-  //   const abi = await abiResponse.json();
-  //   // console.log(address)
-  //   const SmartContractObj = new Web3EthContract(
-  //     abi,
-  //     address
-  //   );
-  //   setMyContract(SmartContractObj)
-
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  //   // return config
-  // };
-
   // Add listeners start
-  ethereum.on('accountsChanged', (accounts) => {
-    console.log('hello')
-    console.log('accountChange', accounts)
-    dispatch(updateAccountRequest({ account: accounts[0] }))
-  })
-  ethereum.on('networkChanged', (chainId) => {
-    if (chainId.toString() === CONFIG.NETWORK.ID.toString()) {
-      Swal.fire({
-        icon: 'success',
-        title: `Correct Network`,
-      })
-      dispatch(connectFailed(''))
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: `Change network to ${CONFIG.NETWORK.NAME}.`,
-      })
-      dispatch(connectFailed(`Change network to ${CONFIG.NETWORK.NAME}.`))
-    }
+  if (window.ethereum) {
+    window.ethereum.on('accountsChanged', (accounts) => {
+      console.log('hello')
+      console.log('accountChange', accounts)
+      dispatch(updateAccountRequest({ account: accounts[0] }))
+    })
+  }
+  if (window.ethereum) {
+    window.ethereum.on('networkChanged', (chainId) => {
+      if (chainId.toString() === CONFIG.NETWORK.ID.toString()) {
+        Swal.fire({
+          icon: 'success',
+          title: `Correct Network`,
+        })
+        dispatch(connectFailed(''))
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: `Change network to ${CONFIG.NETWORK.NAME}.`,
+        })
+        dispatch(connectFailed(`Change network to ${CONFIG.NETWORK.NAME}.`))
+      }
 
-    // if(chainId != CONFIG.NETWORK.ID){
-    //   // console.log('fail',CONFIG.NETWORK.ID)
+      // if(chainId != CONFIG.NETWORK.ID){
+      //   // console.log('fail',CONFIG.NETWORK.ID)
 
-    // }
-  })
+      // }
+    })
+  }
+
   return (
     <>
       <Navbar />
