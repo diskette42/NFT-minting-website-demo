@@ -1,10 +1,9 @@
 {
-    "CONTRACT_ADDRESS": "0xE49C10F4E7aB12F1f5aD047F5B2F4bB08bCd2b63",
-    "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xE49C10F4E7aB12F1f5aD047F5B2F4bB08bCd2b63",
-    "NETWORK": {
-      "NAME": "Rinkeby",
-      "SYMBOL": "Rinkeby",
-      "ID": 4
-    }
-    
+  "CONTRACT_ADDRESS": "0x517483a8Ba96279AB0e5BD19E11e5fA06AC813bE",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x517483a8Ba96279AB0e5BD19E11e5fA06AC813bE",
+  "NETWORK": {
+    "NAME": "Rinkeby",
+    "SYMBOL": "Rinkeby",
+    "ID": 4
   }
+}

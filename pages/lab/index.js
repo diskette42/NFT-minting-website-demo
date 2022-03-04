@@ -27,8 +27,7 @@ function Lab() {
 
   useEffect(async()=>{
     try{
-      // console.log('call')
-      const res = await axios.post(' http://fcda-2001-fb1-39-55a5-1808-7832-dac6-39f5.ngrok.io/draw',newImage)
+      const res = await axios.post('http://localhost:3002/draw',newImage)
       setCreatedImage(res.data.image)
     }catch(err){
       console.log(err)
