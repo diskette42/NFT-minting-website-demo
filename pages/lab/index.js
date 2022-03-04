@@ -82,9 +82,9 @@ function Lab() {
     <>
       <div className="mint-page-bg h-auto w-full object-cover">
         <div className="flex h-full w-full pt-20 ">
-          <div className="flex justify-center flex-row w-full">
-            <div className="mr-14">
-              <img src={createdImage} className="w-[300px] h-[300px] " />
+          <div className="flex flex-col justify-center items-center md:flex-row w-full">
+            <div className="mr-14 sticky top-[60px]">
+              <img src={createdImage} className="w-[300px] h-[300px]  " />
             </div>
             <div className="flex flex-col justify-start items-start w-4/6">
               <div className="flex flex-wrap">
@@ -104,14 +104,14 @@ function Lab() {
               </div>
               <div className="bg-gray-200 w-full h-[5px]"></div>
 
-              <div className="flex flex-wrap w-full">
+              <div className="flex flex-wrap w-full items-center justify-center">
                 {assetChoice.asset.map((choice, i) => (
                   <div
                     onClick={() => handleSetImage(choice)}
                     className="p-2"
                     key={i}
                   >
-                    <Image
+                    <img
                       src={choice.img}
                       width={'300px'}
                       height={'300px'}
