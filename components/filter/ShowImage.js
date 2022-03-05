@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
-
-function ShowImage({ newImage, filterImage }) {
+import styled from 'styled-components'
+import { LazyImage } from '../LazyImage/LazyImage'
+const LoadingDiv = styled.div`
+  opacity: ${(props) => (!props.loaded ? '0' : '1')};
+  transition: opacity 0.15s ease-in;
+`
+function ShowImage({ filterImage, loadedImage }) {
   const filterByAttribute = (value) => {
     return newImage.filter((image) => {
       return image.attributes.find((attr) => {
@@ -9,7 +14,7 @@ function ShowImage({ newImage, filterImage }) {
       })
     })
   }
-
+  console.log(loadedImage)
   //   console.log(newImage)
   return (
     <>
@@ -19,15 +24,24 @@ function ShowImage({ newImage, filterImage }) {
             JAIKO AND GIANT
           </div>
           {/* <div className="flex w-full justify-start"> */}
-          <div className="flex flex-wrap w-full justify-center">
+          <LoadingDiv
+            loaded={loadedImage}
+            className="flex flex-wrap w-full justify-center"
+          >
             {filterImage ? (
               filterImage.map((data, i) => (
                 <div className="m-2" key={i}>
-                  <img
+                  <LazyImage
+                    key={i}
+                    src={data.image_link}
+                    width={200}
+                    height={200}
+                  />
+                  {/* <img
                     src={data.image_link}
                     loading="lazy"
                     className="w-[200px] h-[200px] rounded-xl cursor-pointer hover:scale-110 hover:duration-300"
-                  />
+                  /> */}
                   <div className="flex justify-center items-center">
                     No.{data.edition}
                   </div>
@@ -39,7 +53,7 @@ function ShowImage({ newImage, filterImage }) {
             {(filterImage && filterImage.length) <= 0 && (
               <div>Image not found</div>
             )}
-          </div>
+          </LoadingDiv>
         </div>
         {/* </div> */}
       </div>

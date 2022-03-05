@@ -1,10 +1,11 @@
 import { Checkbox, IconButton } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import SearchIcon from '@mui/icons-material/Search'
 import ShowImage from './ShowImage'
 import axios from 'axios'
 import { CheckCircle } from '@mui/icons-material'
 import CloseIcon from '@mui/icons-material/Close'
+import { getAllAttributes, getFilteredImages } from '../../api'
 
 const filterData = [
   {
@@ -33,6 +34,7 @@ function FilterComponent() {
   const [newImage, setNewImage] = useState([])
   const [filterImage, setFilterImage] = useState([])
   let [toggle, setToggle] = useState([false, false, false, false, false])
+
   const initialCheckedState = [
     {
       name: 'Background',
@@ -105,28 +107,7 @@ function FilterComponent() {
       value: '',
     },
   ])
-  //   const [trait, setTrait] = useState([
-  //     {
-  //       name: 'Background',
-  //       color: ['pink', 'blue', 'green', 'yellow', 'black'],
-  //     },
-  //     {
-  //       name: 'Top lid',
-  //       color: ['pink', 'blue', 'green', 'yellow', 'black'],
-  //     },
-  //     {
-  //       name: 'Bottom lid',
-  //       color: ['pink', 'blue', 'green'],
-  //     },
-  //     {
-  //       name: 'Eye color',
-  //       color: ['pink', 'blue', 'green', 'yellow', 'black'],
-  //     },
-  //     {
-  //       name: 'Eyeball',
-  //       color: ['pink', 'blue', 'green', 'yellow', 'black'],
-  //     },
-  //   ])
+
   const [traits, setTraits] = useState([])
   useEffect(() => {
     getAllTraits()
@@ -138,29 +119,37 @@ function FilterComponent() {
 
   const getAllTraits = async () => {
     try {
-      const res = await axios.get('/api/getAllAttributes')
+      const res = await getAllAttributes()
       setTraits(res.data.traits)
     } catch (err) {
       console.log(err)
     }
   }
 
-  const getAllImages = async () => {
-    const res = await axios.get('/api/getAllImages')
-  }
+  const [loadedImage, setLoadImage] = useState(true)
+
   const getImagesByFiltered = async () => {
     try {
       const obj = {
         arr: checked,
       }
-      const res = await axios.post('/api/getFilteredImages', obj)
-      console.log('haha' + res.data.data)
+      console.log('load')
+      setLoadImage(false)
+      const res = await getFilteredImages(obj)
+      if (res) {
+        setTimeout(() => {
+          setLoadImage(true)
+        }, 1000)
+      }
       setFilterImage(res.data.data)
     } catch (err) {
       console.log(err)
+    } finally {
+      setTimeout(() => {
+        setLoadImage(true)
+      }, 1000)
     }
   }
-
   const handleToggle = (index) => {
     setToggle((prevState) =>
       prevState.map((item, idx) => (idx === index ? !item : item)),
@@ -193,12 +182,9 @@ function FilterComponent() {
   }
 
   const clearFilterChecked = () => {
-    // console.log(checked == initialCheckedState)
     setChecked([...initialCheckedState])
-    // console.log('clear', checked)
   }
-  console.log(checked)
-
+  // console.log('toggled', toggle.current[0])
   return (
     <>
       <div className="flex lg:flex-row flex-col w-full p-5 lg:p-0">
@@ -278,7 +264,11 @@ function FilterComponent() {
             </>
           ))}
         </div>
-        <ShowImage newImage={newImage} filterImage={filterImage} />
+        <ShowImage
+          newImage={newImage}
+          filterImage={filterImage}
+          loadedImage={loadedImage}
+        />
       </div>
     </>
   )

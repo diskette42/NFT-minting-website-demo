@@ -16,7 +16,7 @@ function Mint() {
   const [loading, setLoading] = useState(true)
   const [count, setCount] = useState(1)
   const [myContract, setMyContract] = useState({})
-  const [isWhitelisted, setIsWhitelisted] = useState()
+  const [isWhitelisted, setIsWhitelisted] = useState(false)
   const [presale, setPresale] = useState(false)
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: '',

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { drawNewImage } from '../../api'
 import { saveImage, startCreating } from '../../utility/drawCanvas'
 import { labData as datas } from '../../utility/labData'
 function Lab() {
@@ -26,7 +27,7 @@ function Lab() {
 
   useEffect(async () => {
     try {
-      const res = await axios.post('/api/draw', newImage)
+      const res = await drawNewImage(newImage)
       setCreatedImage(res.data.image)
     } catch (err) {
       console.log(err)
